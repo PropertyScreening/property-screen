@@ -1,0 +1,24 @@
+PROPERTY SCREEN — V10 MOTION POSTER UPDATE
+
+This update uses one visual idea from the supplied SELENE reference: a scroll-driven horizontal story reel whose centre card comes into focus while the surrounding cards recede. PROPERTY SCREEN applies that idea to the four stages of a physical property-screening visit.
+
+UPLOAD ONLY THESE THREE FILES TO THE ROOT OF THE EXISTING GITHUB REPOSITORY:
+- index.html
+- styles.css
+- script.js
+
+Replace the existing versions and commit to the main branch. Do not delete or replace the existing MP4, VTT, poster, GIF, logo, property-landscape image, or separate service pages.
+
+DESKTOP:
+- The What We Check section pins briefly while the four inspection cards travel horizontally in response to vertical scrolling.
+- The card in the centre becomes active; the sequence counter and progress line follow scroll position.
+- All four illustrations have their own active motion: site scan, access pin/road sweep, boundary draw/marker pulse, and report-writing/camera pulse.
+- Hero display text has a subtle outlined motion-poster word behind the main heading.
+
+MOBILE / TABLET:
+- The reel falls back to a normal responsive card grid; it does not force horizontal scrolling.
+- The four card illustrations remain animated.
+
+ACCESSIBILITY:
+- Reduced-motion preferences disable the continuous motion and return the cards to a normal grid.
+- The reel keeps the existing text content and property-screening scope disclaimer.

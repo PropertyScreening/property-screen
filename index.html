@@ -45,21 +45,8 @@
     <section class="hero-screen" id="home">
       <div class="hero-grid-texture"></div><div class="hero-copy reveal">
         <div class="eyebrow"><span class="eyebrow-line"></span> YOUR PROPERTY. CHECKED ON THE GROUND.</div>
-        <h1 class="hero-title" aria-label="Can't visit your property? We'll keep it in view.">
-          <span class="headline-line">
-            <span class="kinetic-word" style="--word-index:0">Can't</span>
-            <span class="kinetic-word" style="--word-index:1">visit</span>
-            <span class="kinetic-word" style="--word-index:2">your</span>
-            <span class="kinetic-word" style="--word-index:3">property?</span>
-          </span>
-          <span class="headline-line headline-accent"><em>
-            <span class="kinetic-word" style="--word-index:4">We'll</span>
-            <span class="kinetic-word" style="--word-index:5">keep</span>
-            <span class="kinetic-word" style="--word-index:6">it</span>
-            <span class="kinetic-word" style="--word-index:7">in</span>
-            <span class="kinetic-word" style="--word-index:8">view.</span>
-          </em></span>
-        </h1>
+        <span class="hero-ghost-word" aria-hidden="true">IN VIEW</span>
+        <h1 class="hero-title"><span class="headline-line">Can't visit your property?</span><span class="headline-line headline-accent"><em>We'll keep it in view.</em></span></h1>
         <p class="hero-intro">Work, distance or a busy schedule shouldn't leave you wondering about your land or property. PROPERTY SCREEN arranges periodic on-ground visits and shares clear visual updates with you.</p>
         <div class="hero-actions"><a class="button button-lime" href="#request">Request a property screening <svg><use href="#i-arrow"></use></svg></a><a class="button button-outline-light watch-film-button" href="#screening-film" data-watch-film><svg><use href="#i-play"></use></svg> Watch how it works</a></div>
         <div class="hero-proof"><span><svg><use href="#i-pin"></use></svg> South Hyderabad launch areas</span><span><svg><use href="#i-camera"></use></svg> Visit-based visual updates</span></div>
@@ -92,11 +79,19 @@
 
     <section class="what-section section-pad" id="what-we-check">
       <div class="section-heading-row reveal"><div><div class="section-kicker">WHAT PROPERTY SCREEN IS ABOUT</div><h2>A closer look.<br><em>Even when you're away.</em></h2></div><p class="section-aside">A scheduled physical visit, a structured visual check and an update you can review remotely.</p></div>
-      <div class="check-grid">
-        <article class="check-card check-card-main reveal"><div class="check-number">01 / SITE CONDITION</div><div class="check-art art-site"><div class="art-sun"></div><div class="art-land"></div><div class="art-boundary"></div><div class="art-house"></div><div class="art-tree t1"></div><div class="art-tree t2"></div><div class="art-scan"></div></div><h3>Visible site condition</h3><p>Observe and record the visible condition of the property at the time of the scheduled visit.</p></article>
-        <article class="check-card reveal"><div class="check-number">02 / ACCESS & SURROUNDINGS</div><div class="mini-art art-access"><span class="road"></span><span class="plot"></span><span class="pin-mini"><svg><use href="#i-pin"></use></svg></span></div><h3>Access & surroundings</h3><p>Capture visual observations of the approach, access points and immediate surroundings.</p></article>
-        <article class="check-card reveal"><div class="check-number">03 / VISIBLE CHANGES</div><div class="mini-art art-boundary-mini"><span></span><i></i><b></b></div><h3>Visible changes or concerns</h3><p>Note visible changes or unusual activity noticed during the visit for the owner's attention.</p></article>
-        <article class="check-card reveal"><div class="check-number">04 / VISIT UPDATE</div><div class="mini-art art-report"><div><span></span><span></span><span></span></div><b><svg><use href="#i-camera"></use></svg></b></div><h3>Photo-based update</h3><p>Share visit observations and available photographs so you can see what was observed on site.</p></article>
+      <div class="check-reel-stage" data-check-reel aria-label="A scroll-driven sequence showing the four parts of a PROPERTY SCREEN visit">
+        <div class="check-reel-sticky">
+          <div class="check-reel-topline"><span><i class="reel-live-dot"></i> FIELD SCREENING SEQUENCE</span><span class="check-reel-scroll-note">SCROLL TO EXPLORE <b>↓</b></span></div>
+          <div class="check-reel-viewport">
+            <div class="check-grid check-reel-track">
+              <article class="check-card check-card-main" data-check-card data-check-title="SITE CONDITION" aria-current="step"><div class="check-number">01 / SITE CONDITION</div><div class="check-art art-site"><div class="art-sun"></div><div class="art-land"></div><div class="art-boundary"></div><div class="art-house"></div><div class="art-tree t1"></div><div class="art-tree t2"></div><div class="art-scan"></div></div><h3>Visible site condition</h3><p>Observe and record the visible condition of the property at the time of the scheduled visit.</p><span class="check-card-foot">ON-GROUND OBSERVATION <b>↗</b></span></article>
+              <article class="check-card" data-check-card data-check-title="ACCESS & SURROUNDINGS"><div class="check-number">02 / ACCESS & SURROUNDINGS</div><div class="mini-art art-access"><span class="road"></span><span class="plot"></span><span class="pin-mini"><svg><use href="#i-pin"></use></svg></span></div><h3>Access & surroundings</h3><p>Capture visual observations of the approach, access points and immediate surroundings.</p><span class="check-card-foot">APPROACH & ACCESS <b>↗</b></span></article>
+              <article class="check-card" data-check-card data-check-title="VISIBLE CHANGES"><div class="check-number">03 / VISIBLE CHANGES</div><div class="mini-art art-boundary-mini"><span></span><i></i><b></b></div><h3>Visible changes or concerns</h3><p>Note visible changes or unusual activity noticed during the visit for the owner's attention.</p><span class="check-card-foot">VISUAL COMPARISON <b>↗</b></span></article>
+              <article class="check-card" data-check-card data-check-title="VISIT UPDATE"><div class="check-number">04 / VISIT UPDATE</div><div class="mini-art art-report"><div><span></span><span></span><span></span></div><b><svg><use href="#i-camera"></use></svg></b></div><h3>Photo-based update</h3><p>Share visit observations and available photographs so you can see what was observed on site.</p><span class="check-card-foot">OWNER REPORT <b>↗</b></span></article>
+            </div>
+          </div>
+          <div class="check-reel-bottomline"><div class="check-reel-count"><strong id="checkReelCurrent">01</strong><span>/ 04</span></div><div class="check-reel-progress" aria-hidden="true"><i id="checkReelProgress"></i></div><span class="check-reel-current-label" id="checkReelCurrentLabel">SITE CONDITION</span></div>
+        </div>
       </div>
       <p class="scope-note"><svg><use href="#i-shield"></use></svg><span><strong>Clear scope matters:</strong> Property screening is a periodic visual visit service, not 24/7 security or surveillance, a legal boundary survey, title verification, structural inspection or a guarantee against trespass or encroachment. The exact visit checklist and deliverables are agreed before service begins.</span></p>
     </section>
@@ -162,7 +157,7 @@
               <track kind="captions" src="PROPERTY-SCREEN-Explainer.vtt" srclang="en" label="English captions" default>
               Your browser does not support embedded video. <a href="PROPERTY-SCREEN-Explainer-with-Voice.mp4">Open the PROPERTY SCREEN explainer video.</a>
             </video>
-            <div class="film-frame-top"><span><i class="film-record-dot"></i> PROPERTY SCREEN EXPLAINER</span><span>VOICE NARRATION · 01:16</span></div>
+            <div class="film-frame-top"><span><i class="film-record-dot"></i> PROPERTY SCREEN EXPLAINER</span><span>VOICE NARRATION · 01:09</span></div>
           </div>
           <div class="film-controls"><span class="film-caption"><svg><use href="#i-eye"></use></svg> Watch how scheduled visits become useful owner updates.</span><button type="button" id="restartFilm" class="motion-toggle">Replay video</button></div>
           <p class="film-playback-status" id="filmPlaybackStatus" role="status" aria-live="polite">Select “Watch how it works” or press play to hear the English explanation.</p>
