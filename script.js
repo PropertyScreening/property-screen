@@ -121,41 +121,44 @@
   window.addEventListener('scroll', updateScrollUI, { passive: true });
   updateScrollUI();
 
-  // The homepage explainer GIF loops automatically, with a pause control.
-  // The hero CTA scrolls to the bottom explainer and starts/restarts the sequence.
-  const screeningAnimation = $('#screeningAnimation');
-  const motionToggle = $('#toggleFilmMotion');
+  // The hero CTA is a user gesture: start the narrated MP4, then scroll to the player.
+  // Calling play() directly in the click handler preserves browser audio-playback permissions.
+  const screeningVideo = $('#screeningVideo');
   const filmSection = $('#screening-film');
-  if (screeningAnimation && motionToggle) {
-    const animationSrc = screeningAnimation.dataset.animationSrc;
-    const posterSrc = screeningAnimation.dataset.posterSrc;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let paused = reduceMotion;
+  const filmStatus = $('#filmPlaybackStatus');
+  const restartFilm = $('#restartFilm');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const applyFilmState = (shouldPause, restart = false) => {
-      paused = shouldPause;
-      screeningAnimation.loading = 'eager';
-      if (paused) {
-        screeningAnimation.src = posterSrc;
-      } else {
-        screeningAnimation.src = restart ? `${animationSrc}?play=${Date.now()}` : animationSrc;
-      }
-      motionToggle.textContent = paused ? 'Play animation' : 'Pause animation';
-      motionToggle.setAttribute('aria-pressed', String(paused));
-    };
+  const setFilmStatus = message => {
+    if (filmStatus) filmStatus.textContent = message;
+  };
 
-    if (paused) applyFilmState(true);
-    motionToggle.addEventListener('click', () => applyFilmState(!paused, !paused));
+  if (screeningVideo) {
+    screeningVideo.addEventListener('play', () => setFilmStatus('Now playing: English voice narration and visual walkthrough. Use the video controls to pause or adjust volume.'));
+    screeningVideo.addEventListener('pause', () => {
+      if (!screeningVideo.ended && screeningVideo.currentTime > 0) setFilmStatus('Video paused. Press play to continue the explanation.');
+    });
+    screeningVideo.addEventListener('ended', () => setFilmStatus('You have reached the end of the PROPERTY SCREEN explainer. Replay it whenever you need.'));
+    screeningVideo.addEventListener('error', () => setFilmStatus('The video could not be loaded. Please refresh the page or use the direct video link below the player.'));
 
     $$('[data-watch-film]').forEach(button => button.addEventListener('click', event => {
       event.preventDefault();
-      if (filmSection) {
-        filmSection.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-        window.history.replaceState(null, '', '#screening-film');
+      // Start playback immediately while the click is still a trusted user action.
+      const playAttempt = screeningVideo.play();
+      if (filmSection) filmSection.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      window.history.replaceState(null, '', '#screening-film');
+      if (playAttempt && typeof playAttempt.catch === 'function') {
+        playAttempt.catch(() => setFilmStatus('Your browser blocked automatic playback. Press the play button on the video to start the narration.'));
       }
-      // Clicking this CTA is an intentional request to watch the animated explainer.
-      applyFilmState(false, true);
     }));
+
+    if (restartFilm) restartFilm.addEventListener('click', () => {
+      screeningVideo.currentTime = 0;
+      const playAttempt = screeningVideo.play();
+      if (playAttempt && typeof playAttempt.catch === 'function') {
+        playAttempt.catch(() => setFilmStatus('Press play on the video to replay the narrated explanation.'));
+      }
+    });
   }
 
 })();

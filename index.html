@@ -142,13 +142,17 @@
           <a class="button button-lime film-cta" href="#request">Discuss screening for my property <svg><use href="#i-arrow"></use></svg></a>
         </div>
         <div class="film-visual-wrap reveal">
-          <div class="film-frame">
-            <img id="screeningAnimation" class="screening-animation" src="property-screening-story.gif" data-animation-src="property-screening-story.gif" data-poster-src="property-screening-poster.webp" alt="AI-generated illustration: a field representative visits a plot, observes visible site conditions, photographs a concern and prepares a visual update for the owner." loading="lazy" width="414" height="413">
-            <div class="film-frame-top"><span><i class="film-record-dot"></i> SCREENING STORY</span><span>ILLUSTRATIVE SEQUENCE</span></div>
-            <div class="film-frame-bottom"><span>ON-GROUND OBSERVATION</span><span>PHOTO NOTES → OWNER UPDATE</span></div>
+          <div class="film-frame film-video-frame">
+            <video id="screeningVideo" class="screening-video" controls playsinline preload="metadata" poster="PROPERTY-SCREEN-Explainer-Poster.jpg" aria-label="PROPERTY SCREEN explainer video with English voice narration. The video explains scheduled physical property visits, visible site observations, photographs and owner updates.">
+              <source src="PROPERTY-SCREEN-Explainer-with-Voice.mp4" type="video/mp4">
+              <track kind="captions" src="PROPERTY-SCREEN-Explainer.vtt" srclang="en" label="English captions" default>
+              Your browser does not support embedded video. <a href="PROPERTY-SCREEN-Explainer-with-Voice.mp4">Open the PROPERTY SCREEN explainer video.</a>
+            </video>
+            <div class="film-frame-top"><span><i class="film-record-dot"></i> PROPERTY SCREEN EXPLAINER</span><span>VOICE NARRATION · 01:09</span></div>
           </div>
-          <div class="film-controls"><span class="film-caption"><svg><use href="#i-eye"></use></svg> A clearer view, even from a distance.</span><button type="button" id="toggleFilmMotion" class="motion-toggle" aria-pressed="false">Pause animation</button></div>
-          <p class="film-disclaimer">AI-generated illustrative animation, not actual customer footage. Property screening is a periodic visual visit service. It may help identify and document visible concerns at the time of a visit; it does not prevent incidents, guarantee detection, or replace continuous security, a legal survey or professional inspection.</p>
+          <div class="film-controls"><span class="film-caption"><svg><use href="#i-eye"></use></svg> Watch how scheduled visits become useful owner updates.</span><button type="button" id="restartFilm" class="motion-toggle">Replay video</button></div>
+          <p class="film-playback-status" id="filmPlaybackStatus" role="status" aria-live="polite">Select “Watch how it works” or press play to hear the English explanation.</p>
+          <p class="film-disclaimer">The video uses AI-generated illustrative scenes and computer-generated English narration; it is not actual customer inspection footage. PROPERTY SCREEN provides scheduled, periodic visual visits—not 24/7 security, legal verification, land surveying or guaranteed prevention or detection of encroachment or loss.</p>
         </div>
       </div>
       <div class="risk-ribbon" aria-label="Examples of visible concerns that may be observed during a visit">

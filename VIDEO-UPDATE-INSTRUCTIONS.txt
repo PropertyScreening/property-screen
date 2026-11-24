@@ -1,0 +1,17 @@
+PROPERTY SCREEN — V6 VIDEO INTEGRATION
+
+Upload these files to the ROOT of the existing GitHub repository PropertyScreening/property-screen:
+- index.html
+- styles.css
+- script.js
+- PROPERTY-SCREEN-Explainer-with-Voice.mp4
+- PROPERTY-SCREEN-Explainer-Poster.jpg
+- PROPERTY-SCREEN-Explainer.vtt
+
+Replace the existing index.html, styles.css and script.js when GitHub asks. Add the three new media/caption files. Do not delete existing logos, favicon, property-landscape.webp, property-screening GIF, other service HTML pages, or repository folders.
+
+After upload, commit to main. GitHub Pages should deploy automatically.
+
+The “Watch how it works” button is wired to start the narrated video and scroll to the video section. Some browsers may block playback until the viewer presses the native play control; a helpful status message is provided. Video controls include play/pause and volume. English captions are provided through the VTT track.
+
+The explainer is AI-illustrated and uses computer-generated English narration. It explains periodic visual screening and does not promise 24/7 security, legal verification, land surveying, or guaranteed prevention/detection.
