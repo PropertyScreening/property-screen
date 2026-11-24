@@ -1,0 +1,20 @@
+PROPERTY SCREEN V12 — READY TO UPLOAD
+
+This package includes the customer screening request form and the deployed Google Apps Script endpoint.
+
+Upload these THREE files directly into the ROOT of the existing GitHub repository PropertyScreening/property-screen:
+- index.html (replace existing)
+- styles.css (replace existing)
+- script.js (replace existing; this file contains your /exec endpoint)
+
+Do NOT upload Code.gs, your Google Sheet, or any private Apps Script files to GitHub.
+Do NOT upload this ZIP file itself.
+
+Commit message: Connect PROPERTY SCREEN screening enquiries to private Google Sheet
+
+After GitHub Pages finishes deploying, test with your own test enquiry. Confirm:
+1. The form displays a submission confirmation/reference ID.
+2. A new row appears in the private "Screening Enquiries" Google Sheet.
+3. The notification email arrives if enabled.
+
+Keep the Google Sheet private. Do not publish it or share edit access publicly.

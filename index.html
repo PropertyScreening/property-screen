@@ -145,7 +145,59 @@
     </section>
 
     <section class="request-section section-pad" id="request"><div class="request-copy"><div class="section-kicker">START WITH YOUR PROPERTY</div><h2>Tell us what you <em>want us to screen.</em></h2><p>Share the location and a few details. We can then discuss access, visit scope, frequency and availability before confirming anything.</p><div class="request-promise"><span><svg><use href="#i-shield"></use></svg></span><p><strong>No automatic booking or payment.</strong><br>This is an enquiry preview until the official contact and secure submission setup is connected.</p></div></div>
-      <form class="request-form" id="screeningForm"><div class="form-row"><label>Your name<input name="name" autocomplete="name" placeholder="Full name" required></label><label>Phone number<input name="phone" type="tel" autocomplete="tel" placeholder="+91 phone number" pattern="[0-9+() -]{8,18}" required></label></div><label>Property location<input name="location" placeholder="Area, landmark or Google Maps location description" required></label><div class="form-row"><label>Property type<select name="propertyType"><option>Open plot / land</option><option>Independent house</option><option>Apartment</option><option>Commercial property</option><option>Other</option></select></label><label>How often do you need a visit?<select name="frequency"><option>Not sure yet — discuss with me</option><option>Once a month</option><option>Twice a month</option><option>Quarterly</option><option>One-time screening</option></select></label></div><label>Anything we should know?<textarea name="details" rows="3" placeholder="Access details, concerns, preferred visit timing..."></textarea></label><label class="consent-line"><input type="checkbox" required><span>I agree that PROPERTY SCREEN may contact me about this enquiry.</span></label><button class="button button-lime" type="submit">Prepare screening enquiry <svg><use href="#i-arrow"></use></svg></button><p class="form-note">Preview only: this form does not send or save your details yet. Please do not submit sensitive documents or ownership records here.</p><p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p></form>
+      <form class="request-form screening-wizard" id="screeningForm" novalidate>
+        <div class="wizard-topline"><span class="wizard-kicker">PROPERTY SCREENING ENQUIRY</span><span class="wizard-step-count" id="wizardStepCount">STEP 01 / 03</span></div>
+        <div class="wizard-progress" aria-hidden="true"><span id="wizardProgressBar"></span></div>
+        <div class="wizard-steps" aria-label="Enquiry steps">
+          <span class="wizard-step-dot active" data-step-indicator="0"><b>01</b><small>YOU</small></span><i></i>
+          <span class="wizard-step-dot" data-step-indicator="1"><b>02</b><small>PROPERTY</small></span><i></i>
+          <span class="wizard-step-dot" data-step-indicator="2"><b>03</b><small>VISIT</small></span>
+        </div>
+        <section class="form-panel" data-form-step="0" aria-labelledby="form-step-1-title">
+          <div class="form-panel-heading"><span>01 / CONTACT DETAILS</span><h3 id="form-step-1-title">Let's get to know you.</h3><p>How can our team reach you about your property?</p></div>
+          <div class="form-row">
+            <label>Full name <em>*</em><input name="name" autocomplete="name" maxlength="90" placeholder="Your full name" required></label>
+            <label>Mobile / WhatsApp number <em>*</em><input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="+91 9XXXXXXXXX" pattern="[0-9+()\s-]{8,20}" required></label>
+          </div>
+          <div class="form-row">
+            <label>Email address <small>OPTIONAL</small><input name="email" type="email" autocomplete="email" maxlength="120" placeholder="you@example.com"></label>
+            <label>Where do you currently live? <small>OPTIONAL</small><input name="currentCity" maxlength="100" placeholder="City / country"></label>
+          </div>
+          <label>Preferred way to contact you<select name="preferredContact" required><option value="WhatsApp">WhatsApp</option><option value="Phone call">Phone call</option><option value="Email">Email</option></select></label>
+          <div class="wizard-actions wizard-actions-end"><button class="button button-lime" type="button" data-next-step>Continue to property details <svg><use href="#i-arrow"></use></svg></button></div>
+        </section>
+        <section class="form-panel" data-form-step="1" aria-labelledby="form-step-2-title" hidden>
+          <div class="form-panel-heading"><span>02 / PROPERTY DETAILS</span><h3 id="form-step-2-title">Tell us about the property.</h3><p>We'll use this to check whether the location and requested service are currently covered.</p></div>
+          <label>What service are you interested in? <em>*</em><select name="serviceType" required><option value="">Choose a service</option><option>Open Plot Monitoring</option><option>Vacant House Monitoring</option><option>Live Video Property Inspection</option><option>Additional Property Visits</option><option>Construction Progress Monitoring</option><option>Rental Property Management</option><option>Not sure — please guide me</option></select></label>
+          <div class="form-row">
+            <label>Property type <em>*</em><select name="propertyType" required><option value="">Choose property type</option><option>Open plot / land</option><option>Vacant / unoccupied house</option><option>Property under construction</option><option>Rented property</option><option>Apartment / flat</option><option>Commercial property</option><option>Other</option></select></label>
+            <label>Approximate property size <small>OPTIONAL</small><input name="propertySize" maxlength="60" placeholder="e.g. 200 sq. yards"></label>
+          </div>
+          <label>Property location <em>*</em><textarea name="location" rows="2" maxlength="500" placeholder="Area, layout / street, nearby landmark and town" required></textarea></label>
+          <div class="form-row">
+            <label>PIN code <small>OPTIONAL</small><input name="pincode" inputmode="numeric" maxlength="10" placeholder="e.g. 501510"></label>
+            <label>Property access <small>OPTIONAL</small><select name="accessType"><option>Access details to discuss</option><option>Roadside / open access</option><option>Gated layout / security access</option><option>Key / authorised entry required</option><option>Interior access requested</option></select></label>
+          </div>
+          <div class="wizard-actions"><button class="button button-outline-dark" type="button" data-back-step>Back</button><button class="button button-lime" type="button" data-next-step>Continue to visit preferences <svg><use href="#i-arrow"></use></svg></button></div>
+        </section>
+        <section class="form-panel" data-form-step="2" aria-labelledby="form-step-3-title" hidden>
+          <div class="form-panel-heading"><span>03 / VISIT PREFERENCES</span><h3 id="form-step-3-title">What would work for you?</h3><p>These are preferences only. The team will confirm feasibility, scope and pricing before any visit is booked.</p></div>
+          <div class="form-row">
+            <label>Preferred visit frequency<select name="frequency" required><option>Not sure yet — discuss with me</option><option>One-time visit enquiry</option><option>Monthly</option><option>Twice a month</option><option>Quarterly</option><option>Other / custom schedule</option></select></label>
+            <label>Plan interest <small>OPTIONAL</small><select name="planInterest"><option>Not sure yet</option><option>Basic</option><option>Plus</option><option>Premium</option></select></label>
+          </div>
+          <label>Preferred visit timing <small>OPTIONAL</small><input name="preferredTiming" maxlength="120" placeholder="e.g. Weekends / first week of the month"></label>
+          <label>Anything else we should know? <small>OPTIONAL</small><textarea name="details" rows="3" maxlength="1200" placeholder="Your concerns, visible areas you want us to observe, access instructions to discuss, or questions..."></textarea></label>
+          <label class="consent-line"><input type="checkbox" name="ownerAuthorization" value="yes" required><span>I confirm that I am the property owner or authorised to make this request, and can arrange lawful access. Any interior visit requires explicit permission.</span></label>
+          <label class="consent-line"><input type="checkbox" name="contactConsent" value="yes" required><span>I consent to PROPERTY SCREEN recording these details in its private enquiry register and using them to respond to this request.</span></label>
+          <div class="form-privacy-note" id="privacy-note"><strong>Your information:</strong> Please share only what's needed for an initial enquiry. Do not submit Aadhaar/PAN numbers, title deeds, OTPs, keys, access codes or sensitive documents in this form.</div>
+          <div class="wizard-actions"><button class="button button-outline-dark" type="button" data-back-step>Back</button><button class="button button-lime wizard-submit" type="submit">Send screening enquiry <svg><use href="#i-arrow"></use></svg></button></div>
+          <p class="form-note">Submitting an enquiry does not book a visit or start a subscription. Service area, lawful access, checklist, visit schedule, deliverables and fees are confirmed in writing before onboarding. Screening is periodic visual observation, not continuous security or a guarantee against loss or encroachment.</p>
+        </section>
+        <label class="form-honeypot" aria-hidden="true">Leave this field empty<input name="website" tabindex="-1" autocomplete="off"></label>
+        <input type="hidden" name="formStartedAt" id="formStartedAt" value="">
+        <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+      </form>
     </section>
 
     <section class="screening-film section-pad" id="screening-film" aria-labelledby="film-title" tabindex="-1">

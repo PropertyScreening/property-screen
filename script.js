@@ -64,22 +64,117 @@
     if (status) { status.hidden = false; status.textContent = 'This website is not connected to the official enquiry inbox yet. Your details have NOT been sent or saved. The other-services enquiry system will be activated before public launch.'; }
   });
 
+  // Customer enquiry wizard. The Apps Script endpoint is connected after
+  // the owner creates the private enquiry sheet and deploys the web app.
+  // Keep this blank until the /exec URL has been created and tested.
+  const SCREENING_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzxLgXCkzmo7_zWNX6BzpkSN7qmnXWpAE8r04W7akXAfqz0XbP7uzWRG55VDhI0lrmTCQ/exec';
   const requestForm = $('#screeningForm');
-  if (requestForm) requestForm.addEventListener('submit', event => {
-    event.preventDefault();
-    if (!requestForm.reportValidity()) return;
+  if (requestForm) {
+    const wizardPanels = $$('.form-panel', requestForm);
+    const wizardIndicators = $$('[data-step-indicator]', requestForm);
+    const progressBar = $('#wizardProgressBar');
+    const stepCount = $('#wizardStepCount');
     const status = $('#formStatus');
-    if (status) {
+    const startedAt = $('#formStartedAt');
+    let activeStep = 0;
+    if (startedAt) startedAt.value = String(Date.now());
+
+    const showFormStatus = message => {
+      if (!status) return;
       status.hidden = false;
-      status.textContent = 'This website is not connected to the official enquiry inbox yet. Your details have NOT been sent or saved. Please contact PROPERTY SCREEN directly once official contact details are published.';
-    }
-  });
+      status.textContent = message;
+    };
+
+    const renderWizardStep = index => {
+      activeStep = Math.max(0, Math.min(index, wizardPanels.length - 1));
+      wizardPanels.forEach((panel, i) => {
+        panel.hidden = i !== activeStep;
+        panel.setAttribute('aria-hidden', String(i !== activeStep));
+      });
+      wizardIndicators.forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === activeStep);
+        indicator.classList.toggle('complete', i < activeStep);
+        indicator.setAttribute('aria-current', i === activeStep ? 'step' : 'false');
+      });
+      if (progressBar) progressBar.style.width = `${((activeStep + 1) / wizardPanels.length) * 100}%`;
+      if (stepCount) stepCount.textContent = `STEP 0${activeStep + 1} / 0${wizardPanels.length}`;
+      if (status) status.hidden = true;
+      const firstField = $('input:not([type="hidden"]), select, textarea', wizardPanels[activeStep]);
+      if (firstField) window.setTimeout(() => firstField.focus({preventScroll:true}), 30);
+      const formTop = requestForm.getBoundingClientRect().top + window.scrollY - 120;
+      if (window.innerWidth < 820) window.scrollTo({top: formTop, behavior: 'smooth'});
+    };
+
+    const validatePanel = panel => {
+      const fields = $$('input, select, textarea', panel).filter(field => !field.disabled && field.type !== 'hidden');
+      for (const field of fields) {
+        if (!field.checkValidity()) {
+          field.reportValidity();
+          field.focus();
+          return false;
+        }
+      }
+      const contactChoice = $('[name="preferredContact"]', requestForm);
+      const email = $('[name="email"]', requestForm);
+      if (contactChoice?.value === 'Email' && email && !email.value.trim()) {
+        email.setCustomValidity('Please enter an email address if you prefer email contact.');
+        email.reportValidity();
+        email.focus();
+        return false;
+      }
+      if (email) email.setCustomValidity('');
+      return true;
+    };
+
+    $$('[data-next-step]', requestForm).forEach(button => button.addEventListener('click', () => {
+      if (validatePanel(wizardPanels[activeStep])) renderWizardStep(activeStep + 1);
+    }));
+    $$('[data-back-step]', requestForm).forEach(button => button.addEventListener('click', () => renderWizardStep(activeStep - 1)));
+
+    const serviceSelect = $('[name="serviceType"]', requestForm);
+    const propertyTypeSelect = $('[name="propertyType"]', requestForm);
+    if (serviceSelect && propertyTypeSelect) serviceSelect.addEventListener('change', () => {
+      const suggestions = {
+        'Open Plot Monitoring': 'Open plot / land',
+        'Vacant House Monitoring': 'Vacant / unoccupied house',
+        'Construction Progress Monitoring': 'Property under construction',
+        'Rental Property Management': 'Rented property'
+      };
+      const suggestedType = suggestions[serviceSelect.value];
+      if (suggestedType && [...propertyTypeSelect.options].some(option => option.value === suggestedType || option.text === suggestedType)) {
+        propertyTypeSelect.value = suggestedType;
+      }
+    });
+
+    requestForm.addEventListener('submit', event => {
+      if (!validatePanel(wizardPanels[activeStep])) {
+        event.preventDefault();
+        return;
+      }
+      if (!SCREENING_FORM_ENDPOINT || !/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(SCREENING_FORM_ENDPOINT)) {
+        event.preventDefault();
+        showFormStatus('The private enquiry register has not been connected yet. Your details have NOT been sent or stored. Please do not enter real customer information until activation is complete.');
+        return;
+      }
+      requestForm.action = SCREENING_FORM_ENDPOINT;
+      requestForm.method = 'POST';
+      requestForm.target = '_blank';
+      const submitButton = $('.wizard-submit', requestForm);
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Opening secure submission…';
+      }
+      showFormStatus('Your secure submission page is opening in a new tab. Keep that tab open until you see the confirmation.');
+    });
+
+    renderWizardStep(0);
+  }
 
   $$('[data-plan]').forEach(link => link.addEventListener('click', () => {
     const form = $('#screeningForm');
     if (!form) return;
-    let details = $('[name="details"]', form);
-    if (details) details.value = `I would like to know about the ${link.dataset.plan} plan. Please explain the proposed visit frequency, checklist and deliverables.`;
+    const plan = $('[name="planInterest"]', form);
+    if (plan) plan.value = link.dataset.plan;
   }));
 
   // Kinetic typography: split headings into individual characters so each
