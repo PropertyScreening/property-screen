@@ -1,131 +1,153 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#123c35">
-  <title>PROPERTY SCREEN | Your Property Is Never Out of Sight.</title>
-  <meta name="description" content="Discover property opportunities, explore localities and connect with property owners across Adibatla and nearby South Hyderabad locations with PROPERTY SCREEN.">
-  <meta property="og:title" content="PROPERTY SCREEN">
-  <meta property="og:description" content="Your Property Is Never Out of Sight.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="property-landscape.webp">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+  <title>PROPERTY SCREEN | Property Screening for Owners Away from Their Property</title>
+  <meta name="description" content="PROPERTY SCREEN helps owners who live away or cannot visit often stay informed through scheduled, on-ground visual property checks and visit updates in South Hyderabad.">
+  <meta property="og:title" content="PROPERTY SCREEN — Your Property Is Never Out of Sight.">
+  <meta property="og:description" content="Periodic on-ground property screening for owners who cannot visit their property frequently.">
+  <meta property="og:image" content="property-landscape.webp"><link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><script defer src="script.js"></script>
 </head>
 <body>
-  <svg xmlns="http://www.w3.org/2000/svg" class="icon-defs" aria-hidden="true" style="display:none">
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
-    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></symbol>
-    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><circle cx="13" cy="11" r=".7" fill="currentColor"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="14" r="4"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+    <symbol id="i-report" viewBox="0 0 24 24"><path d="M6 2h9l4 4v16H6z"/><path d="M14 2v5h5M9 12h7M9 16h7"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
-    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2Z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></symbol>
+    <symbol id="i-land" viewBox="0 0 24 24"><path d="m3 7 7-4 11 4-7 4L3 7Z"/><path d="M3 7v10l11 4V11M21 7v10l-7 4"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="5"/><path d="m11.5 11.5 9-9m-3 3 3 3m-6 0 3 3"/></symbol>
   </svg>
-  <div class="topline"><span class="topline-dot"></span> Preparing to welcome property owners and property seekers in South Hyderabad</div>
-  <header class="header">
-    <a class="brand" href="#home" aria-label="PROPERTY SCREEN home"><img src="property-screen-logo.svg" alt="PROPERTY SCREEN logo"></a>
-    <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav"><svg width="24" height="24"><use href="#i-menu"></use></svg></button>
+
+  <div class="announcement"><span class="live-pulse"></span><span>ON-GROUND PROPERTY SCREENING</span><i></i><span>FOR OWNERS WHO CAN'T VISIT OFTEN</span></div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="PROPERTY SCREEN home"><img src="property-screen-logo.svg" alt="PROPERTY SCREEN"></a>
+    <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav"><svg><use href="#i-menu"></use></svg></button>
     <nav class="nav" id="mainNav" aria-label="Main navigation">
-      <a href="#explore">Explore</a><a href="#locations">Locations</a><a href="#owners">For owners</a><a href="#plans">Plans</a><a href="#about">About</a>
-      <a class="nav-cta" href="#get-started">Get in touch <svg width="16" height="16"><use href="#i-arrow"></use></svg></a>
+      <a href="#how-it-works">How it works</a><a href="#what-we-check">What we check</a><a href="#plans">Plans</a><a href="#locations">Service areas</a><a href="other-services.html">Other services</a>
+      <a class="nav-cta" href="#request">Request a screening <svg><use href="#i-arrow"></use></svg></a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="eyebrow-line"></span> PROPERTY DISCOVERY, WITH CLARITY</div>
-        <h1>Your property is<br><em>never out of sight.</em></h1>
-        <p class="hero-intro">Discover places. Explore possibilities. Connect with property owners and keep your next move in view.</p>
-        <div class="hero-actions"><a class="button button-lime" href="#explore">Explore properties <svg width="18" height="18"><use href="#i-arrow"></use></svg></a><button class="button button-outline-light" type="button" data-interest="I want to list my property">List your property</button></div>
-        <div class="hero-proof"><span class="proof-icon"><svg width="18" height="18"><use href="#i-shield"></use></svg></span><span>Clear information. Thoughtful connections.<br><strong>A more considered property journey.</strong></span></div>
+    <section class="hero-screen" id="home">
+      <div class="hero-grid-texture"></div><div class="hero-copy reveal">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR PROPERTY. CHECKED ON THE GROUND.</div>
+        <h1>Can't visit your property?<br><em>We'll keep it in view.</em></h1>
+        <p class="hero-intro">Work, distance or a busy schedule shouldn't leave you wondering about your land or property. PROPERTY SCREEN arranges periodic on-ground visits and shares clear visual updates with you.</p>
+        <div class="hero-actions"><a class="button button-lime" href="#request">Request a property screening <svg><use href="#i-arrow"></use></svg></a><a class="button button-outline-light" href="#how-it-works">See how it works</a></div>
+        <div class="hero-proof"><span><svg><use href="#i-pin"></use></svg> South Hyderabad launch areas</span><span><svg><use href="#i-camera"></use></svg> Visit-based visual updates</span></div>
       </div>
-      <div class="hero-art" aria-label="Architectural illustration of residential developments and property locations">
-        <img src="property-landscape.webp" alt="Modern residential buildings, landscaped plots and a growing urban neighbourhood">
-        <div class="art-frame"></div><div class="art-label art-label-top"><span class="live-pulse"></span> PROPERTY IN VIEW</div>
-        <div class="art-pin"><svg width="22" height="22"><use href="#i-pin"></use></svg></div>
-        <div class="art-caption"><span>01 / LOCAL DISCOVERY</span><strong>Find your place in the picture.</strong></div>
+      <div class="hero-visual" aria-label="Illustrative property screening scene">
+        <img class="hero-image" src="property-landscape.webp" alt="Illustration of residential buildings, land and a growing neighbourhood">
+        <div class="visual-shade"></div><div class="scan-frame"><span></span></div><div class="scan-line"></div>
+        <div class="float-tag tag-live"><span class="live-pulse"></span> PROPERTY IN VIEW</div>
+        <div class="float-tag tag-location"><svg><use href="#i-pin"></use></svg><span><small>LOCAL VISIT AREA</small><b>South Hyderabad</b></span></div>
+        <div class="report-card-float"><div class="report-card-top"><span class="report-icon"><svg><use href="#i-report"></use></svg></span><span class="report-status">REPORT PREVIEW</span></div><strong>Property visit update</strong><div class="report-line"><span>Visit record</span><b>Photo notes</b></div><div class="report-progress"><i></i></div><small>Illustrative service update · not a live report</small></div>
+        <div class="floating-pin pin-a"><svg><use href="#i-pin"></use></svg></div><div class="floating-pin pin-b"><svg><use href="#i-pin"></use></svg></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="visual-caption"><span>01 / PROPERTY SCREENING</span><span>YOUR PROPERTY IS NEVER OUT OF SIGHT.</span></div>
       </div>
-      <div class="hero-bottom"><div class="hero-bottom-label"><svg width="19" height="19"><use href="#i-pin"></use></svg> OUR INITIAL LOCATIONS</div><div class="hero-location-list"><a href="#locations">Adibatla <span>↗</span></a><a href="#locations">Kongara Kalan <span>↗</span></a><a href="#locations">Nadergul <span>↗</span></a><a href="#locations">Turkayamjal <span>↗</span></a><a href="#locations">Manneguda <span>↗</span></a></div></div>
+      <div class="hero-bottom-note"><span>FOR ABSENTEE & BUSY PROPERTY OWNERS</span><span class="note-divider"></span><span>PERIODIC ON-GROUND CHECKS · VISUAL UPDATES</span></div>
     </section>
 
-    <section class="search-section" id="explore">
-      <div class="section-kicker">START WITH WHAT MATTERS</div>
-      <div class="search-heading-row"><div><h2>What are you looking for?</h2><p>Choose a location and property type to start your enquiry.</p></div><span class="search-note"><svg width="17" height="17"><use href="#i-eye"></use></svg> Your search, in focus</span></div>
-      <form class="search-panel" id="searchForm">
-        <label class="search-field"><span>LOCATION</span><div class="input-with-icon"><svg width="18" height="18"><use href="#i-pin"></use></svg><select id="searchLocation"><option>Adibatla</option><option>Kongara Kalan</option><option>Nadergul</option><option>Turkayamjal</option><option>Manneguda</option></select></div></label>
-        <label class="search-field"><span>PROPERTY TYPE</span><div class="input-with-icon"><svg width="18" height="18"><use href="#i-home"></use></svg><select id="propertyType"><option>Any property type</option><option>Residential plot</option><option>Independent house</option><option>Apartment</option><option>Commercial property</option><option>Agricultural land</option></select></div></label>
-        <label class="search-field"><span>BUDGET</span><div class="input-with-icon"><span class="rupee-symbol">₹</span><select id="budget"><option>Any budget</option><option>Under ₹25 lakh</option><option>₹25–50 lakh</option><option>₹50 lakh–₹1 crore</option><option>₹1–2 crore</option><option>Above ₹2 crore</option></select></div></label>
-        <button class="button button-green search-submit" type="submit"><svg width="18" height="18"><use href="#i-search"></use></svg> Find properties</button>
-      </form>
-      <p class="search-disclaimer">We are onboarding listings. Submit your preferences and our team can follow up when relevant information is available.</p>
+    <section class="problem-section section-pad reveal">
+      <div class="problem-intro"><div class="section-kicker">BUILT AROUND A REAL OWNER PROBLEM</div><h2>Your property is there.<br><em>But you can't always be.</em></h2></div>
+      <div class="problem-copy"><p>You may live in another city, work long hours, manage family responsibilities or own land that is difficult to visit regularly. PROPERTY SCREEN is being built to help bridge that distance with planned, on-ground property screening.</p><div class="problem-stats"><div><b>01</b><span>Owners living<br>away from their land</span></div><div><b>02</b><span>Busy professionals<br>with limited time</span></div><div><b>03</b><span>Owners managing<br>multiple properties</span></div></div></div>
     </section>
 
-    <section class="intro-section" id="about">
-      <div class="intro-art-card"><div class="intro-grid"></div><div class="intro-icon-wrap"><img src="property-screen-mark.svg" alt="PROPERTY SCREEN security and visibility mark"></div><div class="intro-coordinates">17° 11′ N&nbsp;&nbsp; 78° 32′ E <span>•</span> SOUTH HYDERABAD</div><div class="intro-stamp"><svg width="18" height="18"><use href="#i-eye"></use></svg> ALWAYS IN VIEW</div></div>
-      <div class="intro-copy"><div class="section-kicker">A CLEARER WAY TO DISCOVER</div><h2>Property decisions deserve <em>perspective.</em></h2><p>Finding the right property starts with knowing what is available, where it is, and who to speak with. PROPERTY SCREEN is being built to make local property discovery more organised, accessible and straightforward.</p><p>We are starting in and around Adibatla, with a focused approach to property information, owner listings and customer enquiries.</p><a class="text-link" href="#locations">Explore our locations <svg width="17" height="17"><use href="#i-arrow"></use></svg></a></div>
+    <section class="what-section section-pad" id="what-we-check">
+      <div class="section-heading-row reveal"><div><div class="section-kicker">WHAT PROPERTY SCREEN IS ABOUT</div><h2>A closer look.<br><em>Even when you're away.</em></h2></div><p class="section-aside">A scheduled physical visit, a structured visual check and an update you can review remotely.</p></div>
+      <div class="check-grid">
+        <article class="check-card check-card-main reveal"><div class="check-number">01 / SITE CONDITION</div><div class="check-art art-site"><div class="art-sun"></div><div class="art-land"></div><div class="art-boundary"></div><div class="art-house"></div><div class="art-tree t1"></div><div class="art-tree t2"></div><div class="art-scan"></div></div><h3>Visible site condition</h3><p>Observe and record the visible condition of the property at the time of the scheduled visit.</p></article>
+        <article class="check-card reveal"><div class="check-number">02 / ACCESS & SURROUNDINGS</div><div class="mini-art art-access"><span class="road"></span><span class="plot"></span><span class="pin-mini"><svg><use href="#i-pin"></use></svg></span></div><h3>Access & surroundings</h3><p>Capture visual observations of the approach, access points and immediate surroundings.</p></article>
+        <article class="check-card reveal"><div class="check-number">03 / VISIBLE CHANGES</div><div class="mini-art art-boundary-mini"><span></span><i></i><b></b></div><h3>Visible changes or concerns</h3><p>Note visible changes or unusual activity noticed during the visit for the owner's attention.</p></article>
+        <article class="check-card reveal"><div class="check-number">04 / VISIT UPDATE</div><div class="mini-art art-report"><div><span></span><span></span><span></span></div><b><svg><use href="#i-camera"></use></svg></b></div><h3>Photo-based update</h3><p>Share visit observations and available photographs so you can see what was observed on site.</p></article>
+      </div>
+      <p class="scope-note"><svg><use href="#i-shield"></use></svg><span><strong>Clear scope matters:</strong> Property screening is a periodic visual visit service, not 24/7 security or surveillance, a legal boundary survey, title verification, structural inspection or a guarantee against trespass or encroachment. The exact visit checklist and deliverables are agreed before service begins.</span></p>
     </section>
 
-    <section class="locations-section" id="locations">
-      <div class="section-heading-block"><div><div class="section-kicker">LOCAL KNOWLEDGE, STARTING CLOSE TO HOME</div><h2>Explore our <em>launch areas.</em></h2></div><p>Our first focus is a selected group of neighbourhoods around South Hyderabad. More locations can be added as the platform grows.</p></div>
-      <div class="location-grid">
-        <button class="location-card location-card-1" type="button" data-location="Adibatla"><span class="location-number">01</span><span class="location-card-pin"><svg width="17" height="17"><use href="#i-pin"></use></svg></span><span class="location-card-name">Adibatla</span><span class="location-card-action">View area <svg width="15" height="15"><use href="#i-arrow"></use></svg></span></button>
-        <button class="location-card location-card-2" type="button" data-location="Kongara Kalan"><span class="location-number">02</span><span class="location-card-pin"><svg width="17" height="17"><use href="#i-pin"></use></svg></span><span class="location-card-name">Kongara Kalan</span><span class="location-card-action">View area <svg width="15" height="15"><use href="#i-arrow"></use></svg></span></button>
-        <button class="location-card location-card-3" type="button" data-location="Nadergul"><span class="location-number">03</span><span class="location-card-pin"><svg width="17" height="17"><use href="#i-pin"></use></svg></span><span class="location-card-name">Nadergul</span><span class="location-card-action">View area <svg width="15" height="15"><use href="#i-arrow"></use></svg></span></button>
-        <button class="location-card location-card-4" type="button" data-location="Turkayamjal"><span class="location-number">04</span><span class="location-card-pin"><svg width="17" height="17"><use href="#i-pin"></use></svg></span><span class="location-card-name">Turkayamjal</span><span class="location-card-action">View area <svg width="15" height="15"><use href="#i-arrow"></use></svg></span></button>
-        <button class="location-card location-card-5" type="button" data-location="Manneguda"><span class="location-number">05</span><span class="location-card-pin"><svg width="17" height="17"><use href="#i-pin"></use></svg></span><span class="location-card-name">Manneguda</span><span class="location-card-action">View area <svg width="15" height="15"><use href="#i-arrow"></use></svg></span></button>
+    <section class="process-section section-pad" id="how-it-works">
+      <div class="section-heading-row reveal"><div><div class="section-kicker">A SIMPLE, VISIBLE PROCESS</div><h2>From far away<br><em>to in the know.</em></h2></div><p class="section-aside">A straightforward process designed for owners who cannot make frequent visits themselves.</p></div>
+      <div class="process-track"><article class="process-step reveal"><span class="step-index">01</span><div class="step-icon"><svg><use href="#i-pin"></use></svg></div><h3>Share the property details</h3><p>Tell us the location, property type and access information.</p><div class="step-connector"></div></article><article class="process-step reveal"><span class="step-index">02</span><div class="step-icon"><svg><use href="#i-calendar"></use></svg></div><h3>Choose a visit plan</h3><p>Discuss the visit frequency, checklist and service scope before confirmation.</p><div class="step-connector"></div></article><article class="process-step reveal"><span class="step-index">03</span><div class="step-icon"><svg><use href="#i-eye"></use></svg></div><h3>On-ground screening</h3><p>A scheduled visit is carried out, subject to access and local availability.</p><div class="step-connector"></div></article><article class="process-step reveal"><span class="step-index">04</span><div class="step-icon"><svg><use href="#i-report"></use></svg></div><h3>Receive your update</h3><p>Review the agreed visit notes and visual update remotely.</p></article></div>
+    </section>
+
+    <section class="owner-section section-pad reveal">
+      <div class="owner-visual"><img src="property-landscape.webp" alt="Illustrative view of a property landscape"><div class="owner-visual-overlay"></div><div class="owner-stamp"><svg><use href="#i-eye"></use></svg><span>YOUR PROPERTY<br>IN VIEW</span></div><div class="owner-orbit"></div></div>
+      <div class="owner-copy"><div class="section-kicker">MADE FOR OWNERS WHO ARE AWAY</div><h2>Distance shouldn't mean <em>disconnection.</em></h2><p>Whether your property is in your hometown while you work elsewhere, or you simply cannot visit as often as you'd like, a planned property screening visit can help you stay informed about visible site conditions.</p><ul class="owner-list"><li><svg><use href="#i-check"></use></svg> You live or work in another city</li><li><svg><use href="#i-check"></use></svg> Your plot or property is vacant</li><li><svg><use href="#i-check"></use></svg> Your schedule makes regular visits difficult</li><li><svg><use href="#i-check"></use></svg> You want updates without travelling every time</li></ul><a class="text-link" href="#request">Talk about your property <svg><use href="#i-arrow"></use></svg></a></div>
+    </section>
+
+    <section class="plans-section section-pad" id="plans">
+      <div class="section-heading-row reveal"><div><div class="section-kicker">PROPERTY SCREEN MEMBERSHIP</div><h2>Choose your level<br>of <em>screening support.</em></h2></div><p class="section-aside">The approved introductory pricing roadmap. Visit frequency, checklist and deliverables will be confirmed in writing for each plan before payment.</p></div>
+      <div class="phase-switch reveal" role="group" aria-label="Select pricing phase"><button class="phase-button active" type="button" data-phase="0" aria-pressed="true">Months 1–3 <small>Launch</small></button><button class="phase-button" type="button" data-phase="1" aria-pressed="false">Months 4–6 <small>Growth</small></button><button class="phase-button" type="button" data-phase="2" aria-pressed="false">Months 7–9 <small>Scale</small></button><button class="phase-button" type="button" data-phase="3" aria-pressed="false">Month 10+ <small>Standard</small></button></div>
+      <div class="pricing-topline reveal"><div class="fee-label"><span>REGISTRATION FEE</span><strong id="registrationPrice">₹1</strong></div><small id="phaseCaption">Introductory launch offer · Months 1–3</small></div>
+      <div class="price-grid">
+        <article class="price-card reveal"><div class="plan-head"><span>BASIC</span><b>01</b></div><h3>Essential</h3><p>For owners beginning with a straightforward screening arrangement.</p><div class="price-value" id="basicPrice">₹100 <small>/ month</small></div><a class="button button-outline-dark" href="#request" data-plan="Basic">Ask about Basic <svg><use href="#i-arrow"></use></svg></a></article>
+        <article class="price-card price-featured reveal"><div class="popular-tag">MOST POPULAR</div><div class="plan-head"><span>PLUS</span><b>02</b></div><h3>Enhanced</h3><p>For owners who want a broader screening arrangement.</p><div class="price-value" id="plusPrice">₹200 <small>/ month</small></div><a class="button button-lime" href="#request" data-plan="Plus">Ask about Plus <svg><use href="#i-arrow"></use></svg></a></article>
+        <article class="price-card reveal"><div class="plan-head"><span>PREMIUM</span><b>03</b></div><h3>Priority</h3><p>For owners looking for a more involved screening arrangement.</p><div class="price-value" id="premiumPrice">₹300 <small>/ month</small></div><a class="button button-outline-dark" href="#request" data-plan="Premium">Ask about Premium <svg><use href="#i-arrow"></use></svg></a></article>
+      </div>
+      <p class="price-disclaimer">Pricing is shown according to the approved transition plan. The precise number of visits, service radius, response times, report format, travel charges (if any), taxes, cancellation and refund terms must be confirmed in a written service agreement before payment. A monthly membership does not imply continuous monitoring.</p>
+    </section>
+
+    <section class="locations-section section-pad" id="locations">
+      <div class="section-heading-row reveal"><div><div class="section-kicker">INITIAL SERVICE AREAS</div><h2>Starting close to<br><em>where it matters.</em></h2></div><p class="section-aside">Initial focus across selected South Hyderabad areas. Confirm the exact property location and service availability with our team.</p></div>
+      <div class="location-marquee" aria-label="Launch service areas"><div class="location-marquee-track"><span>ADIBATLA <i>✳</i></span><span>KONGARA KALAN <i>✳</i></span><span>NADERGUL <i>✳</i></span><span>TURKAYAMJAL <i>✳</i></span><span>MANNEGuda <i>✳</i></span><span>ADIBATLA <i>✳</i></span><span>KONGARA KALAN <i>✳</i></span><span>NADERGUL <i>✳</i></span><span>TURKAYAMJAL <i>✳</i></span><span>MANNEGuda <i>✳</i></span></div></div>
+      <div class="location-footnote"><span><svg><use href="#i-pin"></use></svg> Local coverage is confirmed before scheduling.</span><a href="#request">Check my property location <svg><use href="#i-arrow"></use></svg></a></div>
+    </section>
+
+    <section class="other-hook section-pad reveal"><div class="other-hook-copy"><div class="section-kicker">MORE THAN PROPERTY SCREENING?</div><h2>Explore our <em>other property services.</em></h2><p>Buying, renting, selling or listing a property is a separate journey. Explore those services on their own pages without losing sight of our core property-screening service.</p><a href="other-services.html" class="button button-outline-light">Explore other services <svg><use href="#i-arrow"></use></svg></a></div><div class="hook-orbit"><div class="hook-orbit-inner"><img src="property-screen-mark.svg" alt=""><span>OTHER<br>PROPERTY<br>SERVICES</span></div><i class="hook-dot"></i></div></section>
+
+    <section class="faq-section section-pad" id="faq"><div class="section-heading-row reveal"><div><div class="section-kicker">GOOD TO KNOW</div><h2>Questions, <em>answered.</em></h2></div><p class="section-aside">Understand what a property screening visit can—and cannot—do.</p></div>
+      <div class="faq-list"><details class="reveal"><summary>Is PROPERTY SCREEN a 24/7 security service?<span>+</span></summary><p>No. It is designed as a periodic, scheduled, on-ground visual screening service. It does not provide continuous surveillance, guarding or emergency response.</p></details><details class="reveal"><summary>Can you check vacant plots and land?<span>+</span></summary><p>That is a key use case. Share the location and access details so the team can confirm whether a visit can be arranged and what can be observed safely and lawfully.</p></details><details class="reveal"><summary>Will I receive photographs or a visit report?<span>+</span></summary><p>The agreed service deliverables will be confirmed before onboarding. The proposed model is to provide visit observations with visual documentation where access, conditions and the agreed scope permit.</p></details><details class="reveal"><summary>Does a screening visit verify ownership or legal boundaries?<span>+</span></summary><p>No. A visual screening visit is not title verification, a legal opinion, a cadastral or boundary survey, or a substitute for a licensed professional inspection.</p></details></div>
+    </section>
+
+    <section class="request-section section-pad" id="request"><div class="request-copy"><div class="section-kicker">START WITH YOUR PROPERTY</div><h2>Tell us what you <em>want us to screen.</em></h2><p>Share the location and a few details. We can then discuss access, visit scope, frequency and availability before confirming anything.</p><div class="request-promise"><span><svg><use href="#i-shield"></use></svg></span><p><strong>No automatic booking or payment.</strong><br>This is an enquiry preview until the official contact and secure submission setup is connected.</p></div></div>
+      <form class="request-form" id="screeningForm"><div class="form-row"><label>Your name<input name="name" autocomplete="name" placeholder="Full name" required></label><label>Phone number<input name="phone" type="tel" autocomplete="tel" placeholder="+91 phone number" pattern="[0-9+() -]{8,18}" required></label></div><label>Property location<input name="location" placeholder="Area, landmark or Google Maps location description" required></label><div class="form-row"><label>Property type<select name="propertyType"><option>Open plot / land</option><option>Independent house</option><option>Apartment</option><option>Commercial property</option><option>Other</option></select></label><label>How often do you need a visit?<select name="frequency"><option>Not sure yet — discuss with me</option><option>Once a month</option><option>Twice a month</option><option>Quarterly</option><option>One-time screening</option></select></label></div><label>Anything we should know?<textarea name="details" rows="3" placeholder="Access details, concerns, preferred visit timing..."></textarea></label><label class="consent-line"><input type="checkbox" required><span>I agree that PROPERTY SCREEN may contact me about this enquiry.</span></label><button class="button button-lime" type="submit">Prepare screening enquiry <svg><use href="#i-arrow"></use></svg></button><p class="form-note">Preview only: this form does not send or save your details yet. Please do not submit sensitive documents or ownership records here.</p><p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p></form>
+    </section>
+
+    <section class="screening-film section-pad" id="screening-film" aria-labelledby="film-title">
+      <div class="film-grid-texture" aria-hidden="true"></div>
+      <div class="film-heading reveal">
+        <div class="section-kicker"><span class="live-pulse"></span> SEE THE SERVICE IN MOTION</div>
+        <h2 id="film-title">What could change<br><em>while you're away?</em></h2>
+        <p>Unattended land can show visible signs of dumping, overgrowth, disturbed markers or unauthorised use. A scheduled visit can help bring those observations to your attention.</p>
+      </div>
+      <div class="film-layout">
+        <div class="film-story reveal">
+          <div class="film-story-label"><span>THE PROPERTY SCREEN VISIT</span><span>01 — 04</span></div>
+          <article class="film-story-step"><b>01</b><div><h3>Visit the site</h3><p>A field visit is arranged for the agreed date and access conditions.</p></div></article>
+          <article class="film-story-step"><b>02</b><div><h3>Look for visible changes</h3><p>Observe the general site condition, visible boundary markers, access and surroundings.</p></div></article>
+          <article class="film-story-step"><b>03</b><div><h3>Document what is seen</h3><p>Capture relevant photographs and visit notes within the agreed checklist.</p></div></article>
+          <article class="film-story-step"><b>04</b><div><h3>Share an owner update</h3><p>Send the visit summary so you can review it remotely and decide on any next steps.</p></div></article>
+          <a class="button button-lime film-cta" href="#request">Discuss screening for my property <svg><use href="#i-arrow"></use></svg></a>
+        </div>
+        <div class="film-visual-wrap reveal">
+          <div class="film-frame">
+            <img id="screeningAnimation" class="screening-animation" src="property-screening-story.gif" data-animation-src="property-screening-story.gif" data-poster-src="property-screening-poster.webp" alt="AI-generated illustration: a field representative visits a plot, observes visible site conditions, photographs a concern and prepares a visual update for the owner." loading="lazy" width="414" height="413">
+            <div class="film-frame-top"><span><i class="film-record-dot"></i> SCREENING STORY</span><span>ILLUSTRATIVE SEQUENCE</span></div>
+            <div class="film-frame-bottom"><span>ON-GROUND OBSERVATION</span><span>PHOTO NOTES → OWNER UPDATE</span></div>
+          </div>
+          <div class="film-controls"><span class="film-caption"><svg><use href="#i-eye"></use></svg> A clearer view, even from a distance.</span><button type="button" id="toggleFilmMotion" class="motion-toggle" aria-pressed="false">Pause animation</button></div>
+          <p class="film-disclaimer">AI-generated illustrative animation, not actual customer footage. Property screening is a periodic visual visit service. It may help identify and document visible concerns at the time of a visit; it does not prevent incidents, guarantee detection, or replace continuous security, a legal survey or professional inspection.</p>
+        </div>
+      </div>
+      <div class="risk-ribbon" aria-label="Examples of visible concerns that may be observed during a visit">
+        <div class="risk-ribbon-track">
+          <span><i>01</i> Dumping & debris</span><b>✳</b><span><i>02</i> Overgrowth & blocked access</span><b>✳</b><span><i>03</i> Disturbed boundary markers</span><b>✳</b><span><i>04</i> Signs of unauthorised use</span><b>✳</b><span><i>05</i> Visible site changes</span><b>✳</b>
+          <span aria-hidden="true"><i>01</i> Dumping & debris</span><b aria-hidden="true">✳</b><span aria-hidden="true"><i>02</i> Overgrowth & blocked access</span><b aria-hidden="true">✳</b><span aria-hidden="true"><i>03</i> Disturbed boundary markers</span><b aria-hidden="true">✳</b><span aria-hidden="true"><i>04</i> Signs of unauthorised use</span><b aria-hidden="true">✳</b><span aria-hidden="true"><i>05</i> Visible site changes</span><b aria-hidden="true">✳</b>
+        </div>
       </div>
     </section>
-
-    <section class="promise-section">
-      <div class="promise-heading"><div class="section-kicker">THE PROPERTY SCREEN PROMISE</div><h2>Less noise.<br><em>More clarity.</em></h2><p>A property journey should feel considered at every step. Our platform is being designed around three simple principles.</p></div>
-      <div class="promise-list">
-        <article class="promise-item"><span class="promise-index">01</span><span class="promise-icon"><svg width="24" height="24"><use href="#i-search"></use></svg></span><div><h3>Discover with direction</h3><p>Explore property categories and focus on the locations that matter to you.</p></div><svg width="19" height="19"><use href="#i-arrow"></use></svg></article>
-        <article class="promise-item"><span class="promise-index">02</span><span class="promise-icon"><svg width="24" height="24"><use href="#i-eye"></use></svg></span><div><h3>See the details</h3><p>Present property information in a clear, structured way so customers know what to ask next.</p></div><svg width="19" height="19"><use href="#i-arrow"></use></svg></article>
-        <article class="promise-item"><span class="promise-index">03</span><span class="promise-icon"><svg width="24" height="24"><use href="#i-shield"></use></svg></span><div><h3>Connect thoughtfully</h3><p>Bring property seekers and owners into a more organised enquiry journey.</p></div><svg width="19" height="19"><use href="#i-arrow"></use></svg></article>
-      </div>
-    </section>
-
-    <section class="owner-section" id="owners">
-      <div class="owner-visual"><div class="owner-visual-top"><span>PROPERTY OWNER / 001</span><span><svg width="17" height="17"><use href="#i-shield"></use></svg> OWNER DESK</span></div><div class="owner-visual-building"><div class="tower tower-one"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="tower tower-two"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="house"><b></b><i></i><i></i></div><div class="ground-line"></div></div><div class="owner-visual-bottom"><span>YOUR PROPERTY, PRESENTED WITH CARE</span><strong>01—03</strong></div></div>
-      <div class="owner-copy"><div class="section-kicker">FOR PROPERTY OWNERS</div><h2>Your property deserves <em>to be seen.</em></h2><p>Give your property a clear digital presence and make it easier for interested customers to start a conversation.</p><ul class="check-list"><li><svg width="17" height="17"><use href="#i-check"></use></svg> Structured property details</li><li><svg width="17" height="17"><use href="#i-check"></use></svg> A simple listing enquiry process</li><li><svg width="17" height="17"><use href="#i-check"></use></svg> Subscription options for visibility</li></ul><button class="button button-lime" type="button" data-interest="I want to list my property">List your property <svg width="18" height="18"><use href="#i-arrow"></use></svg></button><small>Listings are subject to review and applicable platform terms.</small></div>
-    </section>
-
-    <section class="plans-section" id="plans">
-      <div class="plans-top"><div><div class="section-kicker">SIMPLE PLANS FOR PROPERTY OWNERS</div><h2>Choose your level<br>of <em>visibility.</em></h2></div><div class="launch-badge"><span class="live-pulse"></span> INTRODUCTORY PRICING<br><strong>MONTHS 1–3</strong></div></div>
-      <div class="registration-note"><span class="registration-icon"><svg width="18" height="18"><use href="#i-spark"></use></svg></span><span><strong>Launch registration fee: ₹1</strong><small>Introductory launch phase. Monthly plan charges shown below.</small></span></div>
-      <div class="plan-grid">
-        <article class="plan-card"><div class="plan-name">Basic</div><p>A simple start for property visibility.</p><div class="plan-price">₹100<span> / month</span></div><div class="plan-divider"></div><ul><li><svg width="16" height="16"><use href="#i-check"></use></svg> Property listing profile</li><li><svg width="16" height="16"><use href="#i-check"></use></svg> Essential property details</li><li><svg width="16" height="16"><use href="#i-check"></use></svg> Enquiry visibility</li></ul><button class="button button-outline-dark plan-button" type="button" data-interest="I am interested in the Basic membership plan">Choose Basic <svg width="16" height="16"><use href="#i-arrow"></use></svg></button></article>
-        <article class="plan-card plan-featured"><span class="plan-recommended">RECOMMENDED</span><div class="plan-name">Plus</div><p>More room to present your property.</p><div class="plan-price">₹200<span> / month</span></div><div class="plan-divider"></div><ul><li><svg width="16" height="16"><use href="#i-check"></use></svg> Everything in Basic</li><li><svg width="16" height="16"><use href="#i-check"></use></svg> Enhanced listing presentation</li><li><svg width="16" height="16"><use href="#i-check"></use></svg> Priority consideration for visibility</li></ul><button class="button button-lime plan-button" type="button" data-interest="I am interested in the Plus membership plan">Choose Plus <svg width="16" height="16"><use href="#i-arrow"></use></svg></button></article>
-        <article class="plan-card"><div class="plan-name">Premium</div><p>A stronger presence for active owners.</p><div class="plan-price">₹300<span> / month</span></div><div class="plan-divider"></div><ul><li><svg width="16" height="16"><use href="#i-check"></use></svg> Everything in Plus</li><li><svg width="16" height="16"><use href="#i-check"></use></svg> Premium listing presentation</li><li><svg width="16" height="16"><use href="#i-check"></use></svg> Additional promotional placement</li></ul><button class="button button-outline-dark plan-button" type="button" data-interest="I am interested in the Premium membership plan">Choose Premium <svg width="16" height="16"><use href="#i-arrow"></use></svg></button></article>
-      </div>
-      <p class="pricing-footnote">Introductory pricing is for the first three months of launch. Pricing changes in later phases as previously planned. Final plan inclusions, billing and applicable taxes will be confirmed in the membership terms before payment is collected.</p>
-    </section>
-
-    <section class="get-started-section" id="get-started">
-      <div class="get-started-copy"><div class="section-kicker">LET'S START A CONVERSATION</div><h2>Keep your next move <em>in view.</em></h2><p>Tell us what you are looking for or what you would like to list. Our team can follow up as PROPERTY SCREEN prepares for launch.</p><div class="contact-promise"><span><svg width="18" height="18"><use href="#i-mail"></use></svg></span><div><strong>One enquiry. A clearer next step.</strong><small>No property availability is implied until details are confirmed.</small></div></div></div>
-      <form class="lead-form" id="leadForm"><div class="form-heading"><span>PROPERTY SCREEN / ENQUIRY</span><span>01—05</span></div>
-        <div class="form-row"><label>Your name<input name="name" autocomplete="name" placeholder="Enter your name" required></label><label>Phone number<input name="phone" type="tel" autocomplete="tel" placeholder="+91" pattern="[0-9+() -]{8,18}" required></label></div>
-        <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
-        <label>I'm interested in<select name="interest" id="interest"><option>I am looking to buy</option><option>I am looking to rent</option><option>I want to list my property</option><option>I am interested in a membership plan</option><option>I am interested in the Basic membership plan</option><option>I am interested in the Plus membership plan</option><option>I am interested in the Premium membership plan</option><option>I am a property owner / developer</option></select></label>
-        <label>Anything else we should know?<textarea name="details" id="details" rows="3" placeholder="Location, property type, budget or other details…"></textarea></label>
-        <label class="consent"><input name="consent" type="checkbox" required><span>I agree that PROPERTY SCREEN may contact me about this enquiry.</span></label>
-        <button class="button button-green form-submit" type="submit">Prepare my enquiry <svg width="18" height="18"><use href="#i-arrow"></use></svg></button>
-        <p class="form-note">Enquiry email will be activated after the official business mailbox is configured. This preview does not yet store submissions.</p><p class="form-status" id="formStatus" role="status" hidden></p>
-      </form>
-    </section>
-    <section class="final-brand-strip"><img src="property-screen-mark.svg" alt=""><div><span>PROPERTY SCREEN</span><strong>Your Property Is Never Out of Sight.</strong></div><a href="#home" aria-label="Back to top">↑</a></section>
   </main>
-
-  <footer class="footer"><div class="footer-main"><div class="footer-brand"><img src="property-screen-logo.svg" alt="PROPERTY SCREEN"><p>Property discovery with a clearer point of view.</p></div><div class="footer-column"><span>EXPLORE</span><a href="#explore">Search properties</a><a href="#locations">Launch locations</a><a href="#plans">Membership plans</a></div><div class="footer-column"><span>CONNECT</span><a href="#owners">List your property</a><a href="#get-started">Send an enquiry</a><a href="#get-started">Contact the team</a></div><div class="footer-column"><span>INFORMATION</span><a href="#about">About PROPERTY SCREEN</a><a href="#disclaimer">Important information</a></div></div><div class="footer-bottom" id="disclaimer"><span>© <span id="year">2026</span> PROPERTY SCREEN. All rights reserved.</span><span>Built around clarity, visibility and trust.</span></div><p class="legal-note">Property information is provided for discovery and enquiry purposes and must be independently checked by the customer. PROPERTY SCREEN does not represent that any property has been legally or technically verified unless expressly stated in a property-specific disclosure. Customers should independently verify title, approvals, boundaries, encumbrances, measurements and all transaction documents with qualified professionals. Applicable real estate regulatory requirements will be addressed before any regulated activity is undertaken.</p></footer>
-</body>
-</html>
+  <footer class="site-footer"><div class="footer-main"><div class="footer-brand"><img src="property-screen-logo.svg" alt="PROPERTY SCREEN"><p>Your Property Is Never Out of Sight.</p><small>Periodic on-ground property screening for owners who cannot visit often.</small></div><div class="footer-col"><span>PROPERTY SCREENING</span><a href="#what-we-check">What we check</a><a href="#how-it-works">How it works</a><a href="#plans">Membership plans</a><a href="#request">Request a screening</a></div><div class="footer-col"><span>OTHER SERVICES</span><a href="other-services.html">Explore all services</a><a href="buy.html">Buy property</a><a href="rent.html">Rent property</a><a href="sell.html">Sell / list property</a></div><div class="footer-col"><span>LOCATIONS</span><a href="#locations">Adibatla</a><a href="#locations">Kongara Kalan</a><a href="#locations">Nadergul</a><a href="#locations">Turkayamjal & Manneguda</a></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> PROPERTY SCREEN. All rights reserved.</span><span>Built around visibility, clarity and trust.</span></div><p class="legal-note">Property screening is a scheduled visual visit service and not continuous security, title verification, legal advice, a boundary survey or a guarantee against loss, trespass or encroachment. Service scope and availability are confirmed in writing before onboarding.</p></footer>
+</body></html>
