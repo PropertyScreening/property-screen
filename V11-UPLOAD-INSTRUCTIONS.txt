@@ -1,0 +1,33 @@
+PROPERTY SCREEN — V11 MOTION POSTER UPGRADE
+
+WHAT THIS UPDATE CHANGES
+- Kinetic typography: main and section headings reveal character-by-character with staggered 3D flip/settle motion.
+- Animated linear light pass and outlined oversized typography behind the content.
+- A new CSS 3D isometric property parcel above the hero photograph, with a scanning plane, boundary grid, vertical stakes, pulsing checkpoint and orbit rings.
+- Pointer movement tilts only the 3D parcel. The hero photograph and narrated video frame stay steady.
+- The four screening illustrations animate continuously. In particular, card 03 draws/pulses its boundary and checkpoint, while card 04 floats its report, writes its report lines and flashes the camera marker.
+- The four process steps are joined by a scroll-progress route line and moving beacon.
+- Scroll-triggered horizontal reel remains on desktop; responsive card layout remains on smaller screens.
+- Reduced-motion preferences are respected.
+
+GITHUB UPDATE
+1. Extract this ZIP.
+2. Open https://github.com/PropertyScreening/property-screen
+3. Choose Add file > Upload files.
+4. Upload ONLY these three files to the repository root:
+   - index.html
+   - styles.css
+   - script.js
+5. Replace the existing versions of those three files.
+6. Leave all other files in the repository untouched. In particular, do not delete or re-upload the MP4, VTT captions, poster, GIF, logo files, images, or separate service pages.
+7. Commit to main with message:
+   V11 - Add cinematic kinetic typography and 3D motion poster visuals
+8. After the Pages deployment finishes, open the site and press Ctrl+Shift+R.
+
+CHECK THESE AREAS
+- Homepage hero: letter-by-letter headline entrance and isometric 3D property parcel.
+- What we check: scroll through all four cards. Cards 03 and 04 now have their own continuous boundary/report animations too.
+- How it works: the thin green route line and beacon progress as the section enters view.
+- Explainer video: frame remains steady; the video content and narration are unchanged.
+
+The hero 3D property parcel is an illustrative CSS 3D graphic, not a live survey or property scan.

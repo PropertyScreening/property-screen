@@ -82,9 +82,76 @@
     if (details) details.value = `I would like to know about the ${link.dataset.plan} plan. Please explain the proposed visit frequency, checklist and deliverables.`;
   }));
 
-  // Light pointer parallax for the hero image; disabled on touch and reduced-motion devices.
+  // Kinetic typography: split headings into individual characters so each
+  // letter arrives with a staggered 3D flip. The original text remains exposed
+  // to assistive technology through aria-label.
+  const kineticSelectors = [
+    '.hero-title', '.problem-intro h2', '.section-heading-row h2',
+    '.owner-copy h2', '.request-copy h2', '.other-hook h2', '.film-heading h2',
+    '.check-card h3', '.process-step h3', '.film-story-step h3'
+  ];
+  const kineticNodes = kineticSelectors.flatMap(selector => $$(selector));
+  const prepareKineticNode = element => {
+    if (element.dataset.kineticReady === 'true') return;
+    const spokenText = (element.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!spokenText) return;
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (node.nodeValue && node.nodeValue.trim() && !node.parentElement?.closest('.kinetic-char')) textNodes.push(node);
+    }
+    let charIndex = 0;
+    textNodes.forEach(node => {
+      const fragment = document.createDocumentFragment();
+      const pieces = node.nodeValue.match(/\s+|[^\s]+/g) || [];
+      pieces.forEach(piece => {
+        if (/^\s+$/.test(piece)) {
+          fragment.append(document.createTextNode(piece));
+          return;
+        }
+        const word = document.createElement('span');
+        word.className = 'kinetic-word';
+        [...piece].forEach(character => {
+          const letter = document.createElement('span');
+          letter.className = 'kinetic-char';
+          letter.style.setProperty('--char-i', charIndex);
+          letter.style.setProperty('--char-delay', `${charIndex * 13}ms`);
+          charIndex += 1;
+          letter.textContent = character;
+          word.append(letter);
+        });
+        fragment.append(word);
+      });
+      node.replaceWith(fragment);
+    });
+    element.classList.add('kinetic-heading');
+    element.setAttribute('aria-label', spokenText);
+    element.dataset.kineticReady = 'true';
+  };
+  kineticNodes.forEach(prepareKineticNode);
+
+  const heroKinetic = $('.hero-title');
+  if (heroKinetic) requestAnimationFrame(() => heroKinetic.classList.add('is-kinetic-active'));
+  const kineticObserver = 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches
+    ? new IntersectionObserver(entries => entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-kinetic-active');
+          kineticObserver.unobserve(entry.target);
+        }
+      }), {threshold: 0.34, rootMargin: '0px 0px -7% 0px'})
+    : null;
+  kineticNodes.forEach(element => {
+    if (element === heroKinetic) return;
+    if (kineticObserver) kineticObserver.observe(element);
+    else element.classList.add('is-kinetic-active');
+  });
+
+  // Pointer depth is applied only to the isometric parcel. The hero photograph
+  // remains fixed, avoiding the camera-shake effect seen in earlier versions.
   const visual = $('.hero-visual');
-  if (visual && matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
+  const parcel3D = $('#hero3DParcel');
+  if (visual && parcel3D && matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
     let frame = 0;
     visual.addEventListener('pointermove', event => {
       if (frame) cancelAnimationFrame(frame);
@@ -92,13 +159,12 @@
         const rect = visual.getBoundingClientRect();
         const x = (event.clientX - rect.left) / rect.width - .5;
         const y = (event.clientY - rect.top) / rect.height - .5;
-        const image = $('.hero-image', visual);
-        if (image) image.style.transform = `scale(1.09) translate(${x * -9}px, ${y * -7}px)`;
+        parcel3D.style.transform = `translate(-50%,-50%) rotateX(${y * -5}deg) rotateY(${x * 5}deg) translateZ(18px)`;
       });
     });
     visual.addEventListener('pointerleave', () => {
       if (frame) cancelAnimationFrame(frame);
-      const image = $('.hero-image', visual); if (image) image.style.transform = '';
+      parcel3D.style.transform = '';
     });
   }
 
@@ -131,7 +197,11 @@
         mobileCheckObserver = new IntersectionObserver(entries => {
           entries.forEach(entry => {
             entry.target.classList.toggle('is-active', entry.isIntersecting);
-            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              const title = $('h3', entry.target);
+              if (title) title.classList.add('is-kinetic-active');
+            }
             else entry.target.removeAttribute('aria-current');
           });
           const visible = checkReelCards.filter(card => card.classList.contains('is-active'));
@@ -181,6 +251,8 @@
       const active = index === activeIndex;
       card.classList.toggle('is-active', active);
       card.classList.add('is-visible');
+      const title = $('h3', card);
+      if (title && active) title.classList.add('is-kinetic-active');
       if (active) card.setAttribute('aria-current', 'step');
       else card.removeAttribute('aria-current');
     });
@@ -199,6 +271,17 @@
       if (progressBar) progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
       if (header) header.classList.toggle('is-scrolled', window.scrollY > 12);
       updateCheckReel();
+      // Draw the four-step process rail as the process section enters view.
+      const processSection = $('.process-section');
+      const routeLine = $('#processRouteLine');
+      const routeBeacon = $('#processRouteBeacon');
+      if (processSection && routeLine && routeBeacon && !matchMedia('(max-width:900px)').matches) {
+        const processRect = processSection.getBoundingClientRect();
+        const span = Math.max(1, processRect.height + window.innerHeight * .35);
+        const routeProgress = Math.min(1, Math.max(0, (window.innerHeight * .72 - processRect.top) / span));
+        routeLine.style.transform = `scaleX(${routeProgress})`;
+        routeBeacon.style.left = `${routeProgress * 100}%`;
+      }
       scrollTick = false;
     });
   };
