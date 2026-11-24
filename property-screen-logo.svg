@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 150" role="img" aria-labelledby="title desc">
+  <title id="title">PROPERTY SCREEN</title><desc id="desc">A property building with an eye camera and security shield.</desc>
+  <g transform="translate(8 9)">
+    <path d="M16 22Q16 9 30 9h100q14 0 14 14v85q0 14-14 14H30q-14 0-14-14z" fill="none" stroke="#123C35" stroke-width="8"/>
+    <path d="M39 99V60l24-15v54M70 99V36l25-17v80M102 99V54l22 15v30" fill="#123C35"/>
+    <path d="M33 108h102l-35-21-32 10z" fill="#C7F36B"/>
+    <path d="M35 108h100" stroke="#123C35" stroke-width="5" stroke-linecap="round"/>
+    <g transform="translate(94 1)">
+      <path d="M20 6c-15 0-27 11-31 24 4 13 16 24 31 24s27-11 31-24C47 17 35 6 20 6Z" fill="#F5F2EA" stroke="#123C35" stroke-width="6"/>
+      <circle cx="20" cy="30" r="14" fill="#123C35"/><circle cx="20" cy="30" r="7" fill="#C7F36B"/><circle cx="24" cy="25" r="3" fill="#fff"/>
+    </g>
+    <g transform="translate(1 83)">
+      <path d="M22 0 43 12v24L22 48 1 36V12z" fill="#123C35" stroke="#F5F2EA" stroke-width="3"/>
+      <rect x="15" y="22" width="14" height="12" rx="2" fill="#fff"/><path d="M18 22v-4a4 4 0 0 1 8 0v4" fill="none" stroke="#fff" stroke-width="3"/>
+    </g>
+  </g>
+  <g fill="#123C35" font-family="Manrope,Arial,sans-serif" font-weight="800" letter-spacing="-2">
+    <text x="188" y="67" font-size="58">PROPERTY</text><text x="188" y="121" font-size="58">SCREEN</text>
+  </g>
+  <path d="M188 132h98" stroke="#C7F36B" stroke-width="7" stroke-linecap="round"/>
+</svg>
