@@ -1,0 +1,25 @@
+PROPERTY SCREEN — V5 HOMEPAGE MOTION UPDATE
+
+WHAT CHANGED
+1. The hero headline now reveals from left to right.
+2. A new lime ticker moves left to right with short service messages.
+3. The hero button now says “Watch how it works”.
+4. Clicking that button smoothly scrolls to the screening explainer at the bottom of the homepage and starts/restarts the animated GIF.
+5. Extra floating information chips and gentle motion have been added to the hero and explainer sections.
+6. Reduced-motion settings are respected; the visitor can still explicitly choose to play the explainer.
+
+GITHUB UPDATE
+Upload and replace ONLY these three files in the repository root:
+- index.html
+- styles.css
+- script.js
+
+Do NOT delete or replace:
+- property-screening-story.gif
+- property-screening-poster.webp
+- property-screen-logo.svg
+- property-screen-mark.svg
+- property-landscape.webp
+- buy.html, rent.html, sell.html, plots.html, other-services.html, services.html
+
+After uploading, commit to the main branch. GitHub Pages will publish the new homepage.

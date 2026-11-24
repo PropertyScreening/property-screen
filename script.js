@@ -122,24 +122,40 @@
   updateScrollUI();
 
   // The homepage explainer GIF loops automatically, with a pause control.
+  // The hero CTA scrolls to the bottom explainer and starts/restarts the sequence.
   const screeningAnimation = $('#screeningAnimation');
   const motionToggle = $('#toggleFilmMotion');
+  const filmSection = $('#screening-film');
   if (screeningAnimation && motionToggle) {
     const animationSrc = screeningAnimation.dataset.animationSrc;
     const posterSrc = screeningAnimation.dataset.posterSrc;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let paused = reduceMotion;
-    if (paused) {
-      screeningAnimation.src = posterSrc;
-      motionToggle.textContent = 'Play animation';
-      motionToggle.setAttribute('aria-pressed', 'true');
-    }
-    motionToggle.addEventListener('click', () => {
-      paused = !paused;
-      screeningAnimation.src = paused ? posterSrc : animationSrc;
+
+    const applyFilmState = (shouldPause, restart = false) => {
+      paused = shouldPause;
+      screeningAnimation.loading = 'eager';
+      if (paused) {
+        screeningAnimation.src = posterSrc;
+      } else {
+        screeningAnimation.src = restart ? `${animationSrc}?play=${Date.now()}` : animationSrc;
+      }
       motionToggle.textContent = paused ? 'Play animation' : 'Pause animation';
       motionToggle.setAttribute('aria-pressed', String(paused));
-    });
+    };
+
+    if (paused) applyFilmState(true);
+    motionToggle.addEventListener('click', () => applyFilmState(!paused, !paused));
+
+    $$('[data-watch-film]').forEach(button => button.addEventListener('click', event => {
+      event.preventDefault();
+      if (filmSection) {
+        filmSection.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        window.history.replaceState(null, '', '#screening-film');
+      }
+      // Clicking this CTA is an intentional request to watch the animated explainer.
+      applyFilmState(false, true);
+    }));
   }
 
 })();
