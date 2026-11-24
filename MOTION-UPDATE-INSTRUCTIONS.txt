@@ -1,0 +1,29 @@
+PROPERTY SCREEN V9 — STABLE VISUALS + FLOATING TYPOGRAPHY
+
+This is a focused update for the existing GitHub Pages website.
+
+Upload these 3 files to the ROOT of the existing repository:
+  1. index.html
+  2. styles.css
+  3. script.js
+
+Repository: PropertyScreening/property-screen
+Branch: main
+
+GitHub steps:
+  - Open the repository.
+  - Choose Add file > Upload files.
+  - Upload all 3 files directly into the repository root.
+  - Replace the existing index.html, styles.css and script.js.
+  - Commit directly to main.
+
+Do NOT delete or replace the MP4, VTT, poster, logo, property image, GIF, or any separate service pages.
+
+What this update changes:
+  - Removes the large hero-image pan/zoom animation and pointer parallax that can feel like camera shake.
+  - Keeps the embedded video player frame stationary.
+  - Adds a left-to-right staggered headline entrance.
+  - Adds a very gentle float to the lime headline promise.
+  - Adds a moving underline/sheen and subtle outlined “IN VIEW” motion graphic.
+  - Keeps independent interface accents moving while the main image and video remain steady.
+  - Respects reduced-motion settings.

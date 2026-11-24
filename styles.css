@@ -148,3 +148,157 @@
 @keyframes film-video-float{0%,100%{translate:0 0}50%{translate:0 -5px}}
 @media(max-width:900px){.film-video-frame{animation:none}.screening-video{aspect-ratio:16/9}}
 @media(prefers-reduced-motion:reduce){.film-video-frame{animation:none!important;transform:none!important;translate:none!important}}
+
+
+/* V9 — stabilize the visual stage; animate independent typography and graphic accents. */
+.hero-visual,
+.hero-image,
+.film-video-frame,
+.film-frame {
+  animation: none !important;
+  transform: none !important;
+  translate: none !important;
+}
+.hero-image {
+  scale: 1.045;
+  object-fit: cover;
+}
+.hero-visual:hover,
+.film-video-frame:hover,
+.film-frame:hover {
+  transform: none !important;
+  translate: none !important;
+}
+.film-video-frame {
+  transition: box-shadow .35s ease !important;
+}
+
+/* Headline: words sweep in from left to right, then the key promise gently floats. */
+.hero-title .headline-line {
+  opacity: 1 !important;
+  clip-path: none !important;
+  transform: none !important;
+  animation: none !important;
+}
+.hero-title .kinetic-word {
+  display: inline-block;
+  white-space: pre;
+  opacity: 0;
+  filter: blur(5px);
+  transform: translate3d(-22px, 9px, 0);
+  animation: kinetic-word-arrive .82s cubic-bezier(.2,.78,.2,1) calc(var(--word-index, 0) * 105ms) forwards;
+  will-change: transform, opacity, filter;
+}
+@keyframes kinetic-word-arrive {
+  0% { opacity: 0; filter: blur(5px); transform: translate3d(-22px, 9px, 0); }
+  72% { opacity: 1; filter: blur(0); transform: translate3d(2px, 0, 0); }
+  100% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0); }
+}
+.hero-title .headline-accent em {
+  position: relative;
+  display: inline-block;
+  animation: promise-float 7.5s ease-in-out 1.8s infinite;
+  will-change: transform;
+}
+.hero-title .headline-accent em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -.055em;
+  height: .075em;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--lime) 0%, rgba(199,243,107,.18) 42%, transparent 78%);
+  transform: scaleX(.32);
+  transform-origin: left center;
+  animation: promise-underline 4.8s ease-in-out 1.6s infinite;
+  pointer-events: none;
+}
+.hero-title .headline-accent em::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 13%;
+  bottom: 15%;
+  left: -22%;
+  width: 28%;
+  opacity: 0;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.18), transparent);
+  transform: skewX(-18deg);
+  animation: promise-sheen 6.5s ease-in-out 2.5s infinite;
+  pointer-events: none;
+}
+@keyframes promise-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes promise-underline { 0%,100% { transform: scaleX(.25); opacity: .65; } 50% { transform: scaleX(1); opacity: 1; } }
+@keyframes promise-sheen { 0%,18% { left: -25%; opacity: 0; } 32% { opacity: .9; } 58%,100% { left: 112%; opacity: 0; } }
+
+/* Ghost typography and orbital ring add an editorial motion-graphic layer behind the copy. */
+.hero-copy { isolation: isolate; }
+.hero-copy::before {
+  content: "IN VIEW";
+  position: absolute;
+  z-index: -1;
+  top: 30%;
+  right: -10%;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(199,243,107,.15);
+  font: 900 clamp(58px, 8vw, 112px)/.9 var(--font-head);
+  letter-spacing: -.09em;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: ghost-type-float 15s ease-in-out infinite alternate;
+}
+.hero-copy::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 116px;
+  height: 116px;
+  top: 11%;
+  right: 3%;
+  border: 1px solid rgba(199,243,107,.22);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 12px rgba(199,243,107,.025), 0 0 0 14px rgba(199,243,107,.035), 0 0 0 30px rgba(199,243,107,.018);
+  pointer-events: none;
+  animation: slow-orbit 24s linear infinite;
+}
+@keyframes ghost-type-float { from { transform: translate3d(0,0,0); } to { transform: translate3d(-13px,-8px,0); } }
+@keyframes slow-orbit { to { transform: rotate(360deg); } }
+
+/* Small editorial rails glide independently; the main content remains steady and readable. */
+.hero-proof span { position: relative; }
+.hero-proof span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -7px;
+  height: 1px;
+  background: var(--lime);
+  animation: proof-line 5s ease-in-out infinite;
+}
+.hero-proof span:nth-child(2)::before { animation-delay: 1.2s; }
+@keyframes proof-line { 0%,100% { right: 100%; opacity: .2; } 50% { right: 0; opacity: .9; } }
+
+/* Keep the explainer player physically still; only its interface chrome can pulse. */
+.film-video-frame .film-frame-top { animation: none !important; }
+.screening-video { transform: none !important; filter: none !important; }
+
+@media (max-width: 900px) {
+  .hero-copy::before { right: -2%; top: 26%; font-size: clamp(55px, 13vw, 90px); }
+  .hero-copy::after { width: 82px; height: 82px; top: 4%; right: 4%; }
+}
+@media (max-width: 520px) {
+  .hero-copy::before { top: 24%; right: -4%; font-size: 54px; }
+  .hero-copy::after { width: 64px; height: 64px; top: 1%; right: 0; }
+  .hero-title .headline-accent em { animation-duration: 9s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .kinetic-word { opacity: 1 !important; filter: none !important; transform: none !important; animation: none !important; }
+  .hero-title .headline-accent em,
+  .hero-title .headline-accent em::before,
+  .hero-title .headline-accent em::after,
+  .hero-copy::before,
+  .hero-copy::after,
+  .hero-proof span::before { animation: none !important; }
+}

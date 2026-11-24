@@ -82,25 +82,9 @@
     if (details) details.value = `I would like to know about the ${link.dataset.plan} plan. Please explain the proposed visit frequency, checklist and deliverables.`;
   }));
 
-  // Light pointer parallax for the hero image; disabled on touch and reduced-motion devices.
-  const visual = $('.hero-visual');
-  if (visual && matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
-    let frame = 0;
-    visual.addEventListener('pointermove', event => {
-      if (frame) cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const rect = visual.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - .5;
-        const y = (event.clientY - rect.top) / rect.height - .5;
-        const image = $('.hero-image', visual);
-        if (image) image.style.transform = `scale(1.09) translate(${x * -9}px, ${y * -7}px)`;
-      });
-    });
-    visual.addEventListener('pointerleave', () => {
-      if (frame) cancelAnimationFrame(frame);
-      const image = $('.hero-image', visual); if (image) image.style.transform = '';
-    });
-  }
+  // The hero artwork and video player intentionally remain steady.
+  // Motion is applied to independent graphic accents and headline words in CSS,
+  // rather than shifting the whole image or video frame. This avoids a shaky feel.
 
 
   // Reading progress indicator and subtle sticky-header state.
